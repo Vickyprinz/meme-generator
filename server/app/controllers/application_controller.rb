@@ -22,6 +22,7 @@ class ApplicationController < ActionController::API
         JWT.encode(data, secret)
     end
 
+    
     def secret 
         'shhh'
     end 
