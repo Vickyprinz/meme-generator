@@ -32,4 +32,16 @@ class API {
             headers: {Authorization: localStorage.getItem('token')}
         }).then(resp => resp.json())
     }
-}
+
+    static createMeme (myMeme) {
+        return fetch(this.myMemes, {
+         method: "POST",
+         headers: { "Content-Type": "application/json",
+         Authorization: localStorage.getItem('token') },
+         body: JSON.stringify(myMeme)
+       }).then(resp => resp.json())
+     }
+ }
+ 
+ export default API
+ 
