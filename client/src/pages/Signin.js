@@ -50,5 +50,13 @@ class Signin extends Component {
                         className="form-control mb-4" 
                         placeholder="Password" 
                     />
-
+       <button onClick={(e) => this.handleSubmit(e)}> Sign in </button>
+                </form>
+            </div>
+          
+        );
     }
+}
+export default Signin;
+
+    
