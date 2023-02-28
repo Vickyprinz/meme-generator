@@ -13,4 +13,33 @@ class MemeForm extends Component {
         xOffset: '10%'
       }
       
+      updateText = (event) => {
+        this.setState({
+          [event.currentTarget.name]: event.currentTarget.value
+        });
+      }
+      
+      getState = (e, type) => {
+        let rect = this.imageRef.getBoundingClientRect();
+        const xOffset = e.clientX - rect.left;
+        const yOffset = e.clientY - rect.top;
+        let stateObject = {};
+        if (type === "bottom") {
+          stateObject = {
+            isBottomDragging: true,
+            isTopDragging: false,
+            bottomX: `${xOffset}px`,
+            bottomY: `${yOffset}px`
+          }
+        } else if (type === "top") {
+          stateObject = {
+            isTopDragging: true,
+            isBottomDragging: false,
+            topX: `${xOffset}px`,
+            topY: `${yOffset}px`
+          }
+        }
+        return stateObject;
+      }
+      
 }
