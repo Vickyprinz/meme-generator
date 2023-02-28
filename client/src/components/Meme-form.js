@@ -97,4 +97,11 @@ class MemeForm extends Component {
             stroke: "black",
             userSelect: "none"
           } 
+          return
+          <div>
+          <Modal className='meme-gen-modal' isOpen={modalIsOpen}>
+              <ModalHeader cssModule={{'modal-title': 'w-100 text-center'}}>Create your meme</ModalHeader>
+              <ModalBody>
 }
+
+
