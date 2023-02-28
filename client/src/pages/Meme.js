@@ -17,4 +17,7 @@ class Memes extends Component {
         .then(data => this.setState({memes: data.data.memes.filter(meme => meme.box_count <= 2)}))
     
     }
+    componentDidMount() {
+        this.getMemesFromApi()
+    }
     }
