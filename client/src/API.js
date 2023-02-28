@@ -14,4 +14,11 @@ class API {
      }).then(resp => resp.json())
  
     }
+    static signup (user) {
+        return fetch(this.signupUrl, {
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(user)
+        }).then(resp => resp.json())
+       }
 }
