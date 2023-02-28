@@ -7,5 +7,13 @@ import API from '../API'
 
 
 class Dashboard extends Component {
-    
+    render() { 
+        const {myMemes} = this.props
+
+        const meme = myMemes.map(meme => (
+        <CustomisedMeme 
+            key={meme.id} 
+            meme={meme}
+        />))
+    }
 }
