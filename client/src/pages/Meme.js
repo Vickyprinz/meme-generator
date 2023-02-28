@@ -50,4 +50,19 @@ class Memes extends Component {
                 currentImgBase64={this.state.currentImgBase64}
                 addToMyMemes={this.props.addToMyMemes}
             /> 
+            <MemesCollection 
+            username={this.state.username}
+            memes={this.state.memes} 
+            handleClick={this.toggleModal}
+        />
+        </div>
+        } else {
+            return <MemesCollection 
+            username={this.state.username}
+            memes={this.state.memes} 
+            handleClick={this.toggleModal}
+        />
+        }
+    }
+
     }
