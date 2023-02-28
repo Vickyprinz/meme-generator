@@ -59,4 +59,11 @@ class MemeForm extends Component {
             });
           }
     }
+    handleMouseUp = () => {
+        document.removeEventListener('mousemove', this.handleMouseMove);
+        this.setState({
+          isTopDragging: false,
+          isBottomDragging: false
+        });
+    }
 }
