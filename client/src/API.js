@@ -21,4 +21,11 @@ class API {
             body: JSON.stringify(user)
         }).then(resp => resp.json())
        }
+       static validate () {
+        const token = localStorage.getItem('token') 
+        return fetch(this.validateUrl, {
+         headers: { Authorization: token }
+     }).then(resp => resp.json())
+    }
+ 
 }
