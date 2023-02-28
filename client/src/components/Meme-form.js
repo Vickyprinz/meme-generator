@@ -66,4 +66,21 @@ class MemeForm extends Component {
           isBottomDragging: false
         });
     }
+    handleMemeCreation = async () => {
+        const {name} =  this.props.selectedMeme
+ 
+        let svg = document.getElementById('svg_ref')
+        saveSvgAsPng(svg, 'meme.png')
+        const myImgUri = await svgAsDataUri(svg)
+
+        const myMeme = {
+            name: name,
+            url: myImgUri
+        }
+
+        console.log(myMeme.url)
+        // POST request 
+        API.createMeme(myMeme)
+            .then(myMeme => this.props.addToMyMemes(myMeme));       
+    }
 }
