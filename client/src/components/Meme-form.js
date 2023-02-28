@@ -74,8 +74,7 @@ class MemeForm extends Component {
           isTopDragging: false,
           isBottomDragging: false
         });
-      }
-      
+    }
 
     handleMemeCreation = async () => {
         const {name} =  this.props.selectedMeme
