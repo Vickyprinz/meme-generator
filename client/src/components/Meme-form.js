@@ -102,6 +102,29 @@ class MemeForm extends Component {
           <Modal className='meme-gen-modal' isOpen={modalIsOpen}>
               <ModalHeader cssModule={{'modal-title': 'w-100 text-center'}}>Create your meme</ModalHeader>
               <ModalBody>
+              <svg 
+                            id="svg_ref"
+                            width='400'
+                            height='400'
+                            ref={el => { this.svgRef = el }}
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <image
+                            ref={el => {this.imageRef = el}}
+                            xlinkHref={this.props.selectedMeme.url}
+                            height='400'
+                            width='400'
+                            />
+                          <text
+                                style={{...textStyle, zIndex: this.state.isTopDragging ? 4 : 1 }}
+                                x={this.state.topX} 
+                                y={this.state.topY}
+                                dominantBaseline='middle'
+                                textAnchor='middle'
+                                onMouseDown={event => this.handleMouseDown(event, 'top')}
+                                onMouseUp={event => this.handleMouseUp(event, 'top')}
+
+                            > 
 }
 
 
