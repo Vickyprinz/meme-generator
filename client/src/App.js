@@ -15,5 +15,11 @@ class App extends Component {
     myMemes: []
   }
 }
+signin = (username, token) => {
+  localStorage.setItem('token', token)
+  this.setState({username}, () => {
+    this.props.history.push('/memes')
+  })
+}
 
 export default App;
