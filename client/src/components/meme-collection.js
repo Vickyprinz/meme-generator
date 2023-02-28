@@ -11,5 +11,12 @@ class MemesCollection extends Component {
             meme={meme}
             handleClick={this.props.handleClick}
           />))
+          return ( 
+
+            <div className= 'memeCollection'> 
+            {meme} 
+            </div>
+           
+         );
 }
 }
