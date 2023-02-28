@@ -20,4 +20,24 @@ class Memes extends Component {
     componentDidMount() {
         this.getMemesFromApi()
     }
+    toggleModal = (selectedMeme) => {
+        const image = selectedMeme.url
+        const base_image = new Image()
+        base_image.src = image
+        const base64 = this.getBase64Image(base_image)
+        this.setState({
+            modalIsOpen: !this.state.modalIsOpen, 
+            selectedMeme: selectedMeme,
+            currentImgBase64: base64
+        })
+    }
+    getBase64Image = (img) => {
+        let canvas = document.createElement("canvas");
+        canvas.width = 400;
+        canvas.height = 400;
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        let dataURL = canvas.toDataURL('image/png', 0.5);
+        return dataURL;
+   
     }
