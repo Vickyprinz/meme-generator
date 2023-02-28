@@ -125,6 +125,40 @@ class MemeForm extends Component {
                                 onMouseUp={event => this.handleMouseUp(event, 'top')}
 
                             > 
+                            {this.state.toptext}
+                            </text>
+                            <text
+                                style={textStyle}
+                                x={this.state.bottomX} 
+                                y={this.state.bottomY}
+                                dominantBaseline='middle'
+                                textAnchor='middle'
+                                onMouseDown={event => this.handleMouseDown(event, 'bottom')}
+                                onMouseUp={event => this.handleMouseUp(event, 'bottom')}   
+                            >
+                                {this.state.bottomtext}
+                            </text>
+                           
+                        </svg>
+                        <div className="meme-form">
+                        <FormGroup>
+                            <Label for="toptext">Top Text</Label>
+                            <input className="form-control" type="text" name="toptext" id="toptext" placeholder="Add text to the top" onChange={this.changeText} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="bottomtext">Bottom Text</Label>
+                            <input className="form-control" type="text" name="bottomtext" id="bottomtext" placeholder="Add text to the bottom" onChange={this.changeText} />
+                        </FormGroup >
+                        <button className="text-center" onClick={this.handleMemeCreation} className="btn btn-outline-black">Create Meme!</button>
+                        </div>
+                    </ModalBody>
+                </Modal>
+
+            </div> 
+          
+        )
+    }
 }
+
 
 
