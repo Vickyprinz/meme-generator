@@ -53,4 +53,11 @@ class Signup extends Component {
                         className="form-control mb-4" 
                         placeholder="Password" 
                     />
+                      <button onClick={(e) => this.handleSubmit(e)} className="btn btn-info btn-block my-4" type="submit">Sign up</button>
+    
+    </form>
+</div>
+
+);
+}
 }
