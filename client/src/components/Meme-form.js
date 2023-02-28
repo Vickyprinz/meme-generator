@@ -83,4 +83,18 @@ class MemeForm extends Component {
         API.createMeme(myMeme)
             .then(myMeme => this.props.addToMyMemes(myMeme));       
     }
+    render() { 
+        const {modalIsOpen} = this.props
+        const {image} = this.props.selectedMeme
+        const base_img = new Image()
+        base_img.src = image
+
+        const textStyle = {
+            fontFamily: "Impact",
+            fontSize: "25px",
+            textTransform: "uppercase",
+            fill: "white",
+            stroke: "black",
+            userSelect: "none"
+          } 
 }
