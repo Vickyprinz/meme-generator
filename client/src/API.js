@@ -27,5 +27,9 @@ class API {
          headers: { Authorization: token }
      }).then(resp => resp.json())
     }
- 
+    static getDashboard () {
+        return fetch(this.dashboardUrl, {
+            headers: {Authorization: localStorage.getItem('token')}
+        }).then(resp => resp.json())
+    }
 }
