@@ -1,5 +1,13 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import { Route, Switch, withRouter } from 'react-router-dom'
+
+import Home from './pages/Home'
+import Signin from './pages/Signin'
+import Signup from './pages/Signup'
+import Memes from './pages/Memes';
+import API from './API';
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
