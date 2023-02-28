@@ -1,13 +1,11 @@
-
-
 import React, {Component} from 'react';
 import './App.css';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
 
 import Home from './pages/Home'
 import Signin from './pages/Signin'
 import Signup from './pages/Signup'
-import Memes from './pages/Memes';
+import Memes from './pages/Meme';
 import API from './API';
 import Dashboard from './pages/Dashboard'
 
