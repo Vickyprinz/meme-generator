@@ -41,5 +41,9 @@ class MemeForm extends Component {
         }
         return stateObject;
       }
-      
+      handleMouseDown = (e, type) => {
+        const stateObj = this.getStateObj(e, type)
+        document.addEventListener('mousemove', (event) => this.handleMouseMove(event, type))
+        this.setState({...stateObj})
+    }
 }
