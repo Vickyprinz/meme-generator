@@ -40,4 +40,14 @@ class Memes extends Component {
         let dataURL = canvas.toDataURL('image/png', 0.5);
         return dataURL;
    
+        renderForm = () => {
+            if (this.state.selectedMeme) {
+            return <div>
+            <MemeForm 
+                username={this.props.username}
+                selectedMeme={this.state.selectedMeme}
+                modalIsOpen={this.state.modalIsOpen}
+                currentImgBase64={this.state.currentImgBase64}
+                addToMyMemes={this.props.addToMyMemes}
+            /> 
     }
