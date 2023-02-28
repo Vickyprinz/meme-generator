@@ -15,5 +15,12 @@ class Dashboard extends Component {
             key={meme.id} 
             meme={meme}
         />))
+        return (
+            <div>
+                <NavBar/>
+                <h1>My memes</h1>
+                <div className= 'memeCollection'> {meme} </div>            
+            </div> 
+         );
     }
 }
