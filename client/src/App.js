@@ -20,6 +20,15 @@ signin = (username, token) => {
   this.setState({username}, () => {
     this.props.history.push('/memes')
   })
+  signup = (username) => {
+    this.setState({username})
+  }
+
+  signout = () => {
+    this.setState({username: ''})
+    localStorage.removeItem('token')
+    this.props.history.push('/')
+  }
 }
 
 export default App;
