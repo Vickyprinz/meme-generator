@@ -1,51 +1,59 @@
 import React, { Component } from 'react';
+
 import { Modal, ModalHeader, ModalBody, FormGroup, Label } from 'reactstrap';
 
 import API from '../API'
 
 import {saveSvgAsPng, svgAsDataUri} from 'save-svg-as-png';
+
 class MemeForm extends Component {
     state = {
-        headerText: "",
-        subheaderText: "",
-        isDragging: false,
-        yOffset: '30%',
-        xOffset: '10%'
-      }
-      
-      updateText = (event) => {
+        toptext: "",
+        bottomtext: "",
+        isTopDragging: false,
+        isBottomDragging: false,
+        topY: '10%',
+        bottomY: '60%',
+        topX: '25%',
+        bottomX: '20%'
+    }
+
+    changeText = (event) => {
         this.setState({
           [event.currentTarget.name]: event.currentTarget.value
         });
       }
-      
-      getState = (e, type) => {
+    
+    getStateObj = (e, type) => {
         let rect = this.imageRef.getBoundingClientRect();
         const xOffset = e.clientX - rect.left;
         const yOffset = e.clientY - rect.top;
-        let stateObject = {};
+        let stateObj = {};
         if (type === "bottom") {
-          stateObject = {
+            stateObj = {
             isBottomDragging: true,
             isTopDragging: false,
             bottomX: `${xOffset}px`,
             bottomY: `${yOffset}px`
-          }
+            }
         } else if (type === "top") {
-          stateObject = {
+            stateObj = {
             isTopDragging: true,
             isBottomDragging: false,
             topX: `${xOffset}px`,
             topY: `${yOffset}px`
-          }
+            }
         }
-        return stateObject;
-      }
-      handleMouseDown = (e, type) => {
+        return stateObj;
+        }
+    
+    
+    handleMouseDown = (e, type) => {
         const stateObj = this.getStateObj(e, type)
         document.addEventListener('mousemove', (event) => this.handleMouseMove(event, type))
         this.setState({...stateObj})
     }
+
     handleMouseMove = (e, type) => {
         if (this.state.isTopDragging || this.state.isBottomDragging) {
             let stateObj = {};
@@ -59,13 +67,16 @@ class MemeForm extends Component {
             });
           }
     }
+
     handleMouseUp = () => {
         document.removeEventListener('mousemove', this.handleMouseMove);
         this.setState({
           isTopDragging: false,
           isBottomDragging: false
         });
-    }
+      }
+      
+
     handleMemeCreation = async () => {
         const {name} =  this.props.selectedMeme
  
@@ -83,6 +94,7 @@ class MemeForm extends Component {
         API.createMeme(myMeme)
             .then(myMeme => this.props.addToMyMemes(myMeme));       
     }
+   
     render() { 
         const {modalIsOpen} = this.props
         const {image} = this.props.selectedMeme
@@ -91,18 +103,19 @@ class MemeForm extends Component {
 
         const textStyle = {
             fontFamily: "Impact",
-            fontSize: "25px",
+            fontSize: "30px",
             textTransform: "uppercase",
             fill: "white",
             stroke: "black",
             userSelect: "none"
-          } 
-          return
-          <div>
-          <Modal className='meme-gen-modal' isOpen={modalIsOpen}>
-              <ModalHeader cssModule={{'modal-title': 'w-100 text-center'}}>Create your meme</ModalHeader>
-              <ModalBody>
-              <svg 
+          }  
+
+        return ( 
+            <div>
+                <Modal className='meme-gen-modal' isOpen={modalIsOpen}>
+                    <ModalHeader cssModule={{'modal-title': 'w-100 text-center'}}>Create your meme</ModalHeader>
+                    <ModalBody>
+                        <svg 
                             id="svg_ref"
                             width='400'
                             height='400'
@@ -115,7 +128,7 @@ class MemeForm extends Component {
                             height='400'
                             width='400'
                             />
-                          <text
+                            <text
                                 style={{...textStyle, zIndex: this.state.isTopDragging ? 4 : 1 }}
                                 x={this.state.topX} 
                                 y={this.state.topY}
@@ -124,8 +137,8 @@ class MemeForm extends Component {
                                 onMouseDown={event => this.handleMouseDown(event, 'top')}
                                 onMouseUp={event => this.handleMouseUp(event, 'top')}
 
-                            > 
-                            {this.state.toptext}
+                            >
+                                {this.state.toptext}
                             </text>
                             <text
                                 style={textStyle}
@@ -159,6 +172,5 @@ class MemeForm extends Component {
         )
     }
 }
-
-
-
+ 
+export default MemeForm;
