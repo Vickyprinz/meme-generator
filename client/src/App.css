@@ -3,14 +3,9 @@
 }
 
 .App-logo {
+  animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -35,4 +30,27 @@
   to {
     transform: rotate(360deg);
   }
+
+}
+
+
+
+.img {
+  position: relative;
+  padding: 1%;
+  margin-bottom: 35%;
+  border:1px solid #021a40;
+  float: left;
+  width: auto;
+  max-width:  300px;
+  height: auto;
+  max-height: 300px;
+}
+
+.memeCollection {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around; 
 }
