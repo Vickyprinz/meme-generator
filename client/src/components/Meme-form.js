@@ -46,4 +46,17 @@ class MemeForm extends Component {
         document.addEventListener('mousemove', (event) => this.handleMouseMove(event, type))
         this.setState({...stateObj})
     }
+    handleMouseMove = (e, type) => {
+        if (this.state.isTopDragging || this.state.isBottomDragging) {
+            let stateObj = {};
+            if (type === "bottom" && this.state.isBottomDragging) {
+              stateObj = this.getStateObj(e, type);
+            } else if (type === "top" && this.state.isTopDragging){
+              stateObj = this.getStateObj(e, type);
+            }
+            this.setState({
+              ...stateObj
+            });
+          }
+    }
 }
